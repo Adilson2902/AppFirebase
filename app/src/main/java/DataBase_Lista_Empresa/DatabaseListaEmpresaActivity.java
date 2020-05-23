@@ -2,19 +2,19 @@ package DataBase_Lista_Empresa;
 
 import android.content.Intent;
 import android.os.Handler;
-
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.widget.Toast;
-import android.view.View;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-
-import com.example.firebasecurso2.R;
+import com.example.mac.firebasecursods.R;
+import com.example.mac.firebasecursods.database.Gerente;
+import com.example.mac.firebasecursods.database_lista_funcionario.DatabaseListaFuncionarioActivity;
+import com.example.mac.firebasecursods.util.Util;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -24,7 +24,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
-import Util.Util;
 
 public class DatabaseListaEmpresaActivity extends AppCompatActivity implements RecyclerView_ListaEmpresa.ClickEmpresa,
    Runnable{
@@ -148,7 +147,7 @@ public class DatabaseListaEmpresaActivity extends AppCompatActivity implements R
                 }else{
 
 
-                    if(Util.statusInternet_MoWi(getBaseContext())){
+                    if(Util.statusInternet(getBaseContext())){
 
                         Toast.makeText(getBaseContext(),"BLOQUEIO AO NOSSO BD - ",Toast.LENGTH_LONG).show();
 
@@ -206,13 +205,13 @@ public class DatabaseListaEmpresaActivity extends AppCompatActivity implements R
     @Override
     public void click_Empresa(Empresa empresa) {
 
-     /*   Intent intent = new Intent(getBaseContext(),DatabaseListaFuncionarioActivity.class);
+        Intent intent = new Intent(getBaseContext(),DatabaseListaFuncionarioActivity.class);
 
         intent.putExtra("empresa",empresa);
 
         startActivity(intent);
-*/
-        Toast.makeText(getBaseContext(),"Nome: "+empresa.getNome()+"\n\nPasta: "+empresa.getId(),Toast.LENGTH_LONG).show();
+
+       // Toast.makeText(getBaseContext(),"Nome: "+empresa.getNome()+"\n\nPasta: "+empresa.getId(),Toast.LENGTH_LONG).show();
 
     }
 
